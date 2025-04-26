@@ -10,12 +10,12 @@
         <button class="button" type="submit">Reset Attendance</button>
     </form>
     <br>
-{#    <script>#}
-{#        let resetAttdForm = document.querySelector('#reset-attd');#}
-{#        resetAttdForm.querySelector('input[name="startdate"], input[name="enddate"]').addEventListener('change', function (e) {#}
-{#            let startDate = e.target.value#}
-{#            resetAttdForm.action = 'reset_attd/' + startDate + '/'#}
-{#        })#}
-{#    </script>#}
+    {# <script>
+        let resetAttdForm = document.querySelector('#reset-attd');
+        resetAttdForm.querySelector('input[name="startdate"], input[name="enddate"]').addEventListener('change', function (e) {
+            let startDate = e.target.value
+            resetAttdForm.action = 'reset_attd/' + startDate + '/'
+        })
+    </script> #}
     {{ block.super }}
-{% endblock object-tools %}
+    {% endblock object-tools %}

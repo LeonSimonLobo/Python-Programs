@@ -1,90 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="Logged out page" />
+  <meta name="author" content="" />
 
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  <title>Logged Out - CollegeERP</title>
 
-    <title>{% block title %}{% endblock %}</title>
-      {% load static %}
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Bootstrap core CSS-->
-    <link href="{% static '/info/bootstrap/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- FontAwesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
-    <!-- Custom fonts for this template-->
-    <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      background-color: #343a40; /* Bootstrap dark background */
+      color: white;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: 'Poppins', Arial, sans-serif;
+    }
 
-    <!-- Page level plugin CSS-->
-    <link href="{% static '/info/bootstrap/vendor/datatables/dataTables.bootstrap4.css' %}" rel="stylesheet">
+    .logout-container {
+      text-align: center;
+      background: #212529;
+      padding: 2rem 3rem;
+      border-radius: 1rem;
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+      max-width: 400px;
+      width: 90%;
+    }
 
-    <!-- Custom styles for this template-->
-    <link href="{% static '/info/bootstrap/css/sb-admin.css' %}" rel="stylesheet">
+    .logout-container h3 {
+      margin-bottom: 1.5rem;
+    }
 
-    <!-- Latest compiled and minified CSS -->
+    .btn-login {
+      font-size: 1.25rem;
+      padding: 0.75rem 2rem;
+    }
 
+    .redirect-info {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #adb5bd;
+    }
+  </style>
 
-      {% block css %}
-      {% endblock %}
+  <script>
+    // Redirect to login page after 3 seconds
+    setTimeout(function () {
+      window.location.href = "/accounts/login";
+    }, 3000);
+  </script>
+</head>
 
-  </head>
-
-  <body id="page-top">
-
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
-
-      <a class="navbar-brand mr-1" href="{% url 'index' %}">CollegeERP</a>
-
-      <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-        <i class="fas fa-bars"></i>
-      </button>
-
-
-    </nav>
-
-    <div id="wrapper">
-
-
-      <div id="content-wrapper">
-
-        <div class="container-fluid">
-
-            <div class="text-center h3">
-                you have been logged out
-                <br><br>
-                <a class="btn btn-success" href="/accounts/login">login?</a>
-            </div>
-
-        </div>
-        <!-- /.container-fluid -->
-
-      </div>
-      <!-- /.content-wrapper -->
-
-    </div>
-    <!-- /#wrapper -->
-
-    <!-- Scroll to Top Button-->
-    <a class="scroll-to-top rounded" href="#page-top">
-      <i class="fas fa-angle-up"></i>
+<body>
+  <div class="logout-container">
+    <h3><i class="fas fa-sign-out-alt"></i> You have been logged out</h3>
+    <a href="/accounts/login" class="btn btn-success btn-login" role="button" aria-label="Login again">
+      Login Again
     </a>
+    <p class="redirect-info">Redirecting to login page in 3 seconds...</p>
+  </div>
 
-
-    <!-- Bootstrap core JavaScript-->
-    <script src="{% static '/info/bootstrap/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static '/info/bootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-    <!-- Core plugin JavaScript-->
-    <script src="{% static '/info/bootstrap/vendor/jquery-easing/jquery.easing.min.js' %}"></script>
-
-    <!-- Custom scripts for all pages-->
-    <script src="{% static '/info/bootstrap/js/sb-admin.min.js' %}"></script>
-
-   {% block scripts %}
-    {% endblock %}
-  </body>
+  <!-- Bootstrap JS Bundle (optional if you want Bootstrap components to work) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+</body>
 
 </html>
