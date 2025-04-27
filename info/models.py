@@ -135,9 +135,16 @@ class AssignTime(models.Model):
 
 
 class AttendanceClass(models.Model):
+    STATUS_PRESENT = 1
+    STATUS_ABSENT = 2
+    STATUS_CHOICES = (
+        (STATUS_PRESENT, 'Present'),
+        (STATUS_ABSENT, 'Absent'),
+    )
+
     assign = models.ForeignKey(Assign, on_delete=models.CASCADE)
     date = models.DateField()
-    status = models.IntegerField(default=0)
+    status = models.IntegerField(choices=STATUS_CHOICES, default=0)
 
     class Meta:
         verbose_name = 'Attendance'

@@ -213,6 +213,11 @@
                 <i class="fas fa-clock"></i> Time Table
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'aboutus' %}">
+                <i class="fa-solid fa-circle-info"></i> About Us
+              </a>
+            </li>
           {% elif request.user.is_teacher %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 't_clas' request.user.teacher.id 1 %}">
@@ -234,6 +239,11 @@
                 <i class="fas fa-chart-bar"></i> Reports
               </a>
             </li>
+            <li class="nav-item">
+              <a class="nav-link {% if request.resolver_match.url_name == 'index' %}active{% endif %}" href="{% url 'aboutus' %}">
+                <i class="fa-solid fa-circle-info"></i> About Us
+              </a>
+            </li>
           {% endif %}
         </ul>
       </nav>
@@ -250,6 +260,9 @@
   <footer class="text-center">
     <div class="container">
       <p style="color: var(--primary);">&copy; 2025 CollegeERP. All rights reserved.</p>
+    </div>
+    <div class="container">
+      <a style="color: var(--primary);" href="{% url 'aboutus' %}"> About Us</a>
     </div>
   </footer>
 

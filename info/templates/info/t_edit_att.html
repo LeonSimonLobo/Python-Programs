@@ -11,7 +11,7 @@
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
-                <tr>
+                <tr style="color: var(--primary);">
                     <th>Student name</th>
                     <th></th>
                 </tr>
@@ -19,7 +19,7 @@
                 <tbody>
                     {% for att in att_list %}
                     <tr>
-                    <td>{{att.student.name}}</td>
+                    <td style="color: var(--purp);">{{att.student.name}}</td>
                     <td>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
 

@@ -20,9 +20,26 @@ def index(request):
     if request.user.is_student:
         return render(request, 'info/homepage.html')
     if request.user.is_superuser:
-        return render(request, 'info/admin_page.html')
+        total_students = Student.objects.count()
+        total_teachers = Teacher.objects.count()
+    
+        # Get total attendance records count as integer
+        total_attendance_classes = AttendanceClass.objects.count()
+        
+        if total_attendance_classes > 0:
+            # Use integer constant for 'Present' status (adjust if needed)
+            total_attendance = AttendanceClass.objects.filter(status=AttendanceClass.STATUS_PRESENT).count()
+            average_attendance = (total_attendance / total_attendance_classes) * 100
+        else:
+            average_attendance = 0
+            
+        context = {
+            'total_students': total_students,
+            'total_teachers': total_teachers,
+            'average_attendance': average_attendance,
+        }
+        return render(request, 'info/admin_page.html', context)
     return render(request, 'info/logout.html')
-
 
 @login_required()
 def attendance(request, stud_id):
@@ -423,3 +440,7 @@ def add_student(request):
     all_classes = Class.objects.order_by('-id')
     context = {'all_classes': all_classes}
     return render(request, 'info/add_student.html', context)
+
+@login_required()
+def aboutus(request):
+    return render(request, 'info/aboutus.html')

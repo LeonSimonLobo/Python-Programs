@@ -20,7 +20,7 @@
     body, html {
       height: 100%;
       margin: 0;
-      background-color: #4361ee; /* Bootstrap dark background */
+      background-color: #6373e9; /* Bootstrap dark background */
       color: white;
       display: flex;
       justify-content: center;
@@ -30,7 +30,7 @@
 
     .logout-container {
       text-align: center;
-      background: #3f37c9;
+      background: white;
       padding: 2rem 3rem;
       border-radius: 1rem;
       box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
@@ -45,6 +45,7 @@
     .btn-login {
       font-size: 1.25rem;
       padding: 0.75rem 2rem;
+      background-color: #3f37c9;
     }
 
     .redirect-info {
@@ -54,17 +55,19 @@
     }
   </style>
 
-  <script>
-    // Redirect to login page after 3 seconds
-    setTimeout(function () {
-      window.location.href = "/accounts/login";
-    }, 3000);
-  </script>
+<script>
+  // Redirect to login page after 3 seconds
+  setTimeout(function () {
+    window.location.href = "/accounts/login";
+  }, 3000);
+</script>
+</head>
+  
 </head>
 
 <body>
   <div class="logout-container">
-    <h3 style="color: var(--primary);"><i class="fas fa-sign-out-alt"></i> You have been logged out</h3>
+    <h3 style="color: #3f37c9;"><i class="fas fa-sign-out-alt"></i> You have been logged out</h3>
     <a href="/accounts/login" class="btn btn-success btn-login" role="button" aria-label="Login again">
       Login Again
     </a>
