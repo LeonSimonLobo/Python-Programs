@@ -3,15 +3,15 @@
 
 <form action="{% url 'marks_confirm' mc.id %}" method="post">
             {% csrf_token %}
-    <div class="card mb-3">
-        <div class="card-header">
+    <div class="card mt-5">
+        <div class="card-header" style="color: var(--secondary);">
           <i class="fas fa-table"></i>
          <b></b></div>
         <div class="card-body">
           <div class="table-responsive">
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
-                <tr>
+                <tr style="color: var(--primary);">
                     <th>Student Name</th>
                     <th>Total Marks</th>
                     <th>Enter Marks</th>
@@ -20,8 +20,8 @@
                 <tbody>
                     {% for m in m_list %}
                     <tr>
-                    <td>{{m.studentcourse.student.name}}</td>
-                    <td>{{ m.total_marks }}</td>
+                    <td style="color: var(--purp);">{{m.studentcourse.student.name}}</td>
+                    <td style="color: var(--success);">{{ m.total_marks }}</td>
                     <td>
                         <input type="number" name="{{ m.studentcourse.student.USN }}" min="0" max="{{ m.total_marks }}" value="{{ m.marks1 }}">
                     </td>

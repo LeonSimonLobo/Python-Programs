@@ -4,12 +4,12 @@
 
 <form action="{% url 'e_confirm' ass.id %}" method="post">
             {% csrf_token %}
-    <label for="date">Enter Date: </label>
-    <input type="date" name="date">
+    <label for="date" style="color: var(--secondary); position: relative; top: 20px;">Enter Date: </label>
+    <input type="date" name="date" style="position: relative; top: 20px;">
 
 
-    <div class="card mb-3">
-        <div class="card-header">
+    <div class="card mt-5">
+        <div class="card-header" style="color: var(--secondary);">
           <i class="fas fa-table"></i>
          <b>{{ dept1.name }}</b></div>
         <div class="card-body">
@@ -17,14 +17,14 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                 <tr>
-                    <th>Student name</th>
+                    <th style="color: var(--primary);">Student name</th>
                     <th></th>
                 </tr>
               </thead>
                 <tbody>
                 {% for s in c.student_set.all %}
                     <tr>
-                    <td>{{s.name}}</td>
+                    <td style="color: var(--purp);">{{s.name}}</td>
                     <td>
                         <div class="btn-group btn-group-toggle" data-toggle="buttons">
 

@@ -1,15 +1,15 @@
 {% extends 'info/base.html' %}
 
     {% block content %}
-        <div class="card mb-3">
-            <div class="card-header">
+        <div class="card mt-5">
+            <div class="card-header" style="color: var(--secondary);">
               <i class="fas fa-table"></i>
             <strong>{{ cr.name }}</strong></div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                    <tr>
+                    <tr style="color: var(--primary);">
                         <th>#</th>
                         <th>Date</th>
                         <th>Day</th>
@@ -19,7 +19,7 @@
                   </thead>
                   <tbody>
                         {% for a in att_list %}
-                        <tr class="row100 body">
+                        <tr class="row100 body" style="color: var(--success);">
                             <td>{{ forloop.counter }}</td>
                             <td>{{ a.date }}</td>
                             <td>{{ a.date|date:"l" }}</td>
@@ -30,7 +30,7 @@
                             {% endif %}
                         </tr>
                     {% empty %}
-                            <p>student has no attendance</p>
+                            <p style="color: var(--danger);">Student has no attendance.</p>
                     {% endfor %}
 
                   </tbody>

@@ -1,145 +1,514 @@
 <!DOCTYPE html>
 <html lang="en">
 
-  <head>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <meta name="description" content="School Management System Homepage" />
+  <meta name="author" content="" />
+  <title>CollegeERP - School Management System</title>
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+  {% load static %}
 
-    <title>homepage</title>
-      {% load static %}
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/css/bootstrap.min.css" rel="stylesheet" />
 
-    <!-- Bootstrap core CSS -->
-      <link href="{% static '/info/homepage/vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <!-- FontAwesome for icons -->
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
 
+  <!-- Custom styles for this template -->
+  <style>
+    :root {
+      --primary: #4361ee;
+      --secondary: #3f37c9;
+      --accent: #4cc9f0;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --success: #4ade80;
+      --info: #0dcaf0;
+      --warning: #ffc107;
+      --danger: #dc3545;
+    }
 
-    <!-- Custom styles for this template -->
-      <link href="{% static '/info/homepage/css/heroic-features.css' %}" rel="stylesheet">
-          <link href="{% static '/info/bootstrap/vendor/fontawesome-free/css/all.min.css' %}" rel="stylesheet" type="text/css">
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: #f0f4f8;
+    }
 
+    /* Navigation bar styling */
+    .navbar {
+      box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
+      padding: 1rem 0;
+      background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+    }
 
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 0.05em;
+    }
 
-  </head>
+    .navbar-dark .navbar-nav .nav-link {
+      color: rgba(255, 255, 255, 0.85);
+      font-weight: 500;
+      transition: all 0.3s ease;
+      padding: 0.5rem 1rem;
+    }
 
-  <body>
+    .navbar-dark .navbar-nav .nav-link:hover {
+      color: #fff;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 0.25rem;
+    }
 
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
-      <div class="container">
-          <a class="navbar-brand" href="{% url 'index' %}">CollegeERP</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarResponsive">
-          <ul class="navbar-nav ml-auto">
-            <li class="nav-item">
-                <a class="nav-link text-capitalize">{{ request.user.student.name }}</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+    .user-avatar {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.5rem;
+    }
 
-    <!-- Page Content -->
+    /* Dashboard header */
+    .dashboard-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+      color: white;
+      border-radius: 1rem;
+      padding: 3rem 2rem;
+      margin-bottom: 2.5rem;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .dashboard-header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      right: -50%;
+      width: 100%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.1);
+      transform: rotate(30deg);
+    }
+
+    .dashboard-header h1 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+      position: relative;
+      z-index: 1;
+    }
+
+    .dashboard-header p {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Card styling */
+    .dashboard-card {
+      border: none;
+      border-radius: 1rem;
+      overflow: hidden;
+      height: 100%;
+      transition: all 0.3s ease;
+      box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+    }
+
+    .dashboard-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    }
+
+    .card-img-container {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background: linear-gradient(to right, rgba(67, 97, 238, 0.1), rgba(76, 201, 240, 0.1));
+      padding: 1.5rem;
+    }
+
+    .dashboard-card img {
+      max-height: 80px;
+      transition: transform 0.3s ease;
+    }
+
+    .dashboard-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .dashboard-card .card-body {
+      padding: 1.5rem;
+    }
+
+    .dashboard-card .card-title {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--dark);
+      font-size: 1.25rem;
+    }
+
+    .dashboard-card .card-text {
+      color: #6c757d;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .card-footer {
+      background-color: transparent;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1rem 1.5rem;
+    }
+
+    .dashboard-card .btn {
+      border-radius: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary);
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+    }
+
+    /* Quick stats section */
+    .quick-stats .stat-card {
+      background-color: #fff;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+    }
+
+    .quick-stats .stat-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 1rem;
+      font-size: 1.5rem;
+    }
+
+    .quick-stats .stat-info h4 {
+      margin: 0;
+      font-size: 1.75rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+
+    .quick-stats .stat-info p {
+      margin: 0;
+      color: #6c757d;
+      font-size: 0.9rem;
+    }
+
+    .bg-students {
+      background-color: rgba(67, 97, 238, 0.1);
+      color: var(--primary);
+    }
+
+    .bg-teachers {
+      background-color: rgba(76, 201, 240, 0.1);
+      color: var(--accent);
+    }
+
+    .bg-attendance {
+      background-color: rgba(74, 222, 128, 0.1);
+      color: var(--success);
+    }
+
+    .bg-events {
+      background-color: rgba(255, 193, 7, 0.1);
+      color: var(--warning);
+    }
+
+    /* Footer styling */
+    footer {
+      background-color: #fff;
+      box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.05);
+      padding: 1.5rem 0;
+      margin-top: 3rem;
+    }
+
+    /* Responsive fixes */
+    @media (max-width: 992px) {
+      .dashboard-header {
+        padding: 2rem 1.5rem;
+      }
+
+      .container {
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .quick-stats .col-md-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .dashboard-header h1 {
+        font-size: 1.75rem;
+      }
+
+      .quick-stats .col-md-3 {
+        flex: 0 0 100%;
+        max-width: 100%;
+      }
+    }
+
+    /* Modal styling */
+    .modal-content {
+      border-radius: 1rem;
+      border: none;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    }
+
+    .modal-header {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+    }
+
+    .modal-body {
+      padding: 1.5rem;
+    }
+
+    .modal-footer {
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1.5rem;
+    }
+
+    .feature-card {
+      border: none;
+      border-radius: 1rem;
+      overflow: hidden;
+      height: 100%;
+      transition: all 0.3s ease;
+      box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+    }
+
+    .feature-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+    }
+
+    .feature-card .card-img-container {
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      background-color: rgba(67, 97, 238, 0.1);
+      padding: 1.5rem;
+    }
+
+    .feature-card img {
+      max-height: 80px;
+      transition: transform 0.3s ease;
+    }
+
+    .feature-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .feature-card .card-body {
+      padding: 1.5rem;
+    }
+
+    .feature-card .card-title {
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: var(--dark);
+      font-size: 1.25rem;
+    }
+
+    .feature-card .card-text {
+      color: #6c757d;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+
+    .feature-card .card-footer {
+      background-color: transparent;
+      border-top: 1px solid rgba(0, 0, 0, 0.05);
+      padding: 1rem 1.5rem;
+    }
+
+    .feature-card .btn {
+      border-radius: 0.5rem;
+      padding: 0.6rem 1.2rem;
+      font-weight: 500;
+      transition: all 0.3s ease;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--secondary);
+      border-color: var(--secondary);
+      box-shadow: 0 0 0 0.25rem rgba(67, 97, 238, 0.25);
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
     <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="{% url 'index' %}">
+        <i class="fas fa-graduation-cap me-2"></i> CollegeERP
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive"
+        aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <!-- Jumbotron Header -->
-      <header class="jumbotron my-4">
-        <h1 class="display-3 text-capitalize">Welcome {{ request.user.student.name }}</h1>
-{#        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>#}
-{#        <a href="#" class="btn btn-primary btn-lg">Call to action!</a>#}
-      </header>
-
-      <!-- Page Features -->
-      <div class="row text-center">
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-              <a href="{% url 'attendance' request.user.student.USN %}">
-                <img class="card-img-top" src="{% static 'info/images/attendance2.jpg' %}" alt="">
-              </a>
-              <div class="card-body">
-              <h4 class="card-title">Attendance</h4>
-              <p class="card-text">View the attendance status for each of your courses. The attendance of each course is
-                  also displayed as list of classes that were conducted.</p>
-            </div>
-            <div class="card-footer">
-                <a class="btn btn-primary" role="button" href="{% url 'attendance' request.user.student.USN %}"> View Attendance</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-              <a href="{% url 'marks_list' request.user.student.USN %}">
-                <img class="card-img-top" src="{% static 'info/images/marks.jpg' %}" alt="">
-              </a>
-              <div class="card-body">
-              <h4 class="card-title">Marks</h4>
-              <p class="card-text">View the marks obtained for each of your courses. These include the marks of 3
-                  internal assessment, 2 events and the Semester End Exam  </p>
-            </div>
-            <div class="card-footer">
-                <a class="btn btn-primary" role="button" href="{% url 'marks_list' request.user.student.USN %}">View Marks</a>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-lg-3 col-md-6 mb-4">
-          <div class="card">
-              <a href="{% url 'timetable' request.user.student.class_id_id %}">
-                <img class="card-img-top" src="{% static 'info/images/timetable.png' %}" alt="">
-              </a>
-              <div class="card-body">
-              <h4 class="card-title">TimeTable</h4>
-              <p class="card-text">View the timetable in a tabular form. The timetable displays all the courses of the
-                  student and the time and day at which they are conducted.</p>
-            </div>
-            <div class="card-footer">
-                <a class="btn btn-primary" role="button" href="{% url 'timetable' request.user.student.class_id_id %}">View TimeTable</a>
-            </div>
-          </div>
-        </div>
-
-
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ms-auto align-items-center">
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="userDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              <div class="user-avatar">
+                <i class="fas fa-user"></i>
+              </div>
+              <span>{{ request.user.student.name }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                  <i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
-      <!-- /.row -->
-
     </div>
-    <!-- /.container -->
-    <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">×</span>
-            </button>
+  </nav>
+
+  <!-- Main Content -->
+  <main class="container pt-5 mt-5">
+    <!-- Dashboard Header -->
+    <section class="dashboard-header text-center mb-4">
+      <h1 class="display-4">Welcome {{ request.user.student.name }}</h1>
+      <p class="lead">Your personalized dashboard for managing your academic life.</p>
+    </section>
+
+    <!-- Main Features Section -->
+    <section class="mb-5">
+      <h2 class="text-center mb-4 fw-bold">Quick Access</h2>
+      <div class="row g-4 justify-content-center">
+
+        <!-- Attendance Card -->
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card">
+            <a href="{% url 'attendance' request.user.student.USN %}" class="card-img-container">
+              <img src="{% static 'info/images/attendance2.jpg' %}" alt="Attendance" class="img-fluid">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Attendance</h5>
+              <p class="card-text">Check your attendance records for all courses.</p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="{% url 'attendance' request.user.student.USN %}" class="btn btn-primary">View Attendance</a>
+            </div>
           </div>
-          <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-          <div class="modal-footer">
-            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+        </div>
+
+        <!-- Marks Card -->
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card">
+            <a href="{% url 'marks_list' request.user.student.USN %}" class="card-img-container">
+              <img src="{% static 'info/images/marks.jpg' %}" alt="Marks" class="img-fluid">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Marks</h5>
+              <p class="card-text">View marks for internal assessments and final exams.</p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="{% url 'marks_list' request.user.student.USN %}" class="btn btn-primary">View Marks</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Timetable Card -->
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card">
+            <a href="{% url 'timetable' request.user.student.class_id_id %}" class="card-img-container">
+              <img src="{% static 'info/images/timetable.png' %}" alt="Timetable" class="img-fluid">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Timetable</h5>
+              <p class="card-text">Check your daily schedule for all your courses.</p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="{% url 'timetable' request.user.student.class_id_id %}" class="btn btn-primary">View Timetable</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center">
+    <div class="container">
+      <p>&copy; 2025 CollegeERP. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Logout Modal -->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="logoutModalLabel">Ready to Leave?</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          Select "Logout" below if you are ready to end your current session.
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal"
+            aria-label="Cancel logout">Cancel</button>
             <form method="post" action="/accounts/logout/" style="display:inline;">
               {% csrf_token %}
               <button type="submit" class="btn btn-primary">Logout</button>
           </form>
-          </div>
         </div>
       </div>
     </div>
+  </div>
 
-    <!-- Bootstrap core JavaScript -->
-
-
-      <script src="{% static '/info/homepage/vendor/jquery/jquery.min.js' %}"></script>
-    <script src="{% static '/info/homepage/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-
-  </body>
+  <!-- Bootstrap core JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.3/js/bootstrap.bundle.min.js"></script>
+</body>
 
 </html>

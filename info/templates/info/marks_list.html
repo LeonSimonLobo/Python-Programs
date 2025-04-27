@@ -2,15 +2,15 @@
     {% load static %}
 
     {% block content %}
-                  <div class="card mb-3">
-            <div class="card-header">
+                  <div class="card mt-5">
+            <div class="card-header" style="color: var(--secondary);">
               <i class="fas fa-table"></i>
             <b>Marks</b></div>
             <div class="card-body">
               <div class="table-responsive">
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                   <thead>
-                    <tr>
+                    <tr style="color: var(--primary);">
                         <th>Course ID</th>
                         <th>Course name</th>
                         <th>Internals 1</th>
@@ -24,10 +24,10 @@
                   <tbody>
                     {% for sc in sc_list %}
                     <tr>
-                        <td>{{ sc.course_id }}</td>
-                        <td>{{sc.course.name}}</td>
+                        <td style="color: var(--danger);">{{ sc.course_id }}</td>
+                        <td style="color: var(--accent);">{{sc.course.name}}</td>
                         {% for m in sc.marks_set.all %}
-                            <td>{{ m.marks1 }}</td>
+                            <td style="color: var(--success);">{{ m.marks1 }}</td>
                         {% endfor %}
                     </tr>
                     {% empty %}
