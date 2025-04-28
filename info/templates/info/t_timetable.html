@@ -14,17 +14,13 @@
                             <thead class="cf">
                                 <tr style="color: var(--purp);">
                                     <th>      </th>
-                                    <th>7:30 - 8:30</th>
-                                    <th>8:30 - 9:30</th>
-                                    <th>9:30 - 10:30</th>
-                                    <th>Break</th>
-                                    <th>11:00 - 11:50</th>
-                                    <th>11:50 - 12:40</th>
-                                    <th>12:40 - 1:30</th>
+                                    <th>8:30 - 9:20</th>
+                                    <th>9:30 - 10:20</th>
+                                    <th>10:30 - 11:20</th>
+                                    <th>11:30 - 12:20</th>
                                     <th>Lunch</th>
-                                    <th>2:30 - 3:30</th>
-                                    <th>3:30 - 4:30</th>
-                                    <th>4:30 - 5:30</th>
+                                    <th>2:00 - 4:00</th>
+                                    <th>4:00 - 6:00</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -34,10 +30,9 @@
                                         {% if forloop.counter == 1 %}
                                             <td style="color: var(--danger);"><b>{{ j }}</b></td>
                                         {% elif j == True %}
-                                            <td></td>
+                                        <td></td>
                                         {% else %}
-    {#                                        <td><a href="{% url 'free_teachers' j.id %}" >{{ j.assign.class_id_id }} {{ j.assign.course.shortname }}</a> </td>#}
-                                            <td><a href="{% url 'free_teachers' j.id %}">{{ j.assign.class_id_id }} {{ j.assign.course.shortname }}</a>
+                                            <td style="color: var(--primary);">{{ j.assign.class_id_id }} {{ j.assign.course.shortname }}
                                             </td>
                                         {% endif %}
                                     {% endfor %}

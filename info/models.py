@@ -12,15 +12,12 @@ sex_choice = (
 )
 
 time_slots = (
-    ('7:30 - 8:30', '7:30 - 8:30'),
-    ('8:30 - 9:30', '8:30 - 9:30'),
-    ('9:30 - 10:30', '9:30 - 10:30'),
-    ('11:00 - 11:50', '11:00 - 11:50'),
-    ('11:50 - 12:40', '11:50 - 12:40'),
-    ('12:40 - 1:30', '12:40 - 1:30'),
-    ('2:30 - 3:30', '2:30 - 3:30'),
-    ('3:30 - 4:30', '3:30 - 4:30'),
-    ('4:30 - 5:30', '4:30 - 5:30'),
+    ('8:30 - 9:20', '8:30 - 9:20'),
+    ('9:30 - 10:20', '9:30 - 10:20'),
+    ('10:30 - 11:20', '10:30 - 11:20'),
+    ('11:30 - 12:20', '11:30 - 12:20'),
+    ('2:00 - 4:00', '2:00 - 4:00'),
+    ('4:00 - 6:00', '4:00 - 6:00'),
 )
 
 DAYS_OF_WEEK = (
@@ -29,15 +26,14 @@ DAYS_OF_WEEK = (
     ('Wednesday', 'Wednesday'),
     ('Thursday', 'Thursday'),
     ('Friday', 'Friday'),
-    ('Saturday', 'Saturday'),
 )
 
 test_name = (
     ('Internal test 1', 'Internal test 1'),
     ('Internal test 2', 'Internal test 2'),
-    ('Internal test 3', 'Internal test 3'),
-    ('Event 1', 'Event 1'),
-    ('Event 2', 'Event 2'),
+    ('MidSem', 'MidSem'),
+    ('Project 1', 'Project 1'),
+    ('Project 2', 'Project 2'),
     ('Semester End Exam', 'Semester End Exam'),
 )
 
@@ -95,7 +91,7 @@ class Student(models.Model):
     USN = models.CharField(primary_key='True', max_length=100)
     name = models.CharField(max_length=200)
     sex = models.CharField(max_length=50, choices=sex_choice, default='Male')
-    DOB = models.DateField(default='1998-01-01')
+    DOB = models.DateField(default='2006-01-01')
 
     def __str__(self):
         return self.name

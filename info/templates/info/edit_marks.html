@@ -23,7 +23,7 @@
                     <td style="color: var(--purp);">{{m.studentcourse.student.name}}</td>
                     <td style="color: var(--success);">{{ m.total_marks }}</td>
                     <td>
-                        <input type="number" name="{{ m.studentcourse.student.USN }}" min="0" max="{{ m.total_marks }}" value="{{ m.marks1 }}">
+                        <input type="number" style="color: var(--warning);" name="{{ m.studentcourse.student.USN }}" min="0" max="{{ m.total_marks }}" value="{{ m.marks1 }}">
                     </td>
                     </tr>
                 {% endfor %}
