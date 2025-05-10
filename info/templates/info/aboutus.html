@@ -1,0 +1,152 @@
+{% extends 'info/base.html' %}
+
+        {% block content %}
+        <style>
+        .feature-card {
+            margin-top: 30px;
+            border: none;
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+          }
+      
+          .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.15);
+          }
+      
+          .feature-card .card-img-container {
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background-color: rgba(67, 97, 238, 0.1);
+            padding: 1.5rem;
+          }
+      
+          .feature-card img {
+            max-height: fit-content;
+            transition: transform 0.3s ease;
+          }
+      
+          .feature-card:hover img {
+            transform: scale(1.1);
+          }
+      
+          .feature-card .card-body {
+            padding: 1.5rem;
+          }
+      
+          .feature-card .card-title {
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+            font-size: 1.25rem;
+          }
+      
+          .feature-card .card-text {
+            color: #6c757d;
+            font-size: 0.9rem;
+            line-height: 1.6;
+          }
+      
+          .feature-card .card-footer {
+            background-color: transparent;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            padding: 1rem 1.5rem;
+          }
+
+          .para-card {
+            margin-top: 30px;
+            border: none;
+            border-radius: 1rem;
+            overflow: hidden;
+            height: 100%;
+            transition: all 0.3s ease;
+            box-shadow: 0 0.25rem 0.75rem rgba(0, 0, 0, 0.08);
+          }
+
+          .para-card .card-body {
+            padding: 1.5rem;
+          }
+      
+          .para-card .card-text {
+            color: var(--dark);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            text-align: center;
+          }
+        </style>
+    <section class="mb-5">
+      <h2 class="text-center mb-4 fw-bold" style=" position: relative; top: 16px; color: var(--secondary);">Developers</h2>
+      <div class="row g-4 justify-content-center">
+
+        <!-- Leon Lobo -->
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card">
+            <a class="card-img-container" href="https://www.linkedin.com/in/leon-lobo-b17023338/" target="_blank">
+              <img src="https://media.licdn.com/dms/image/v2/D4D03AQG4qNLSDD9alA/profile-displayphoto-shrink_400_400/B4DZPGJcB1GoAg-/0/1734196184158?e=1751500800&v=beta&t=HAbqSMhP3hKQZRpgD8kMOoTwpa_-g-RwJM597OgXXSE" alt="Attendance" class="img-fluid">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Leon Lobo</h5>
+              <p class="card-text">Frontend Developer. Dabbling in HTML,CSS,Tailwind and Django.</p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="https://www.linkedin.com/in/leon-lobo-b17023338/" target="_blank"  >https://www.linkedin.com/in/leon-lobo-b17023338/</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Marks Card -->
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card">
+            <a href="https://www.linkedin.com/in/jay-vankar-2b5074343/" class="card-img-container" target="_blank">
+              <img src="https://media.licdn.com/dms/image/v2/D4E03AQHx9C7EJRFWhQ/profile-displayphoto-shrink_400_400/B4EZZ3UoChHkAg-/0/1745758619377?e=1751500800&v=beta&t=aKSBsR9Mfz2be2naBpfZNjjYH_jTzHYhjCQ_n1yeHP8" alt="Marks" class="img-fluid">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Jay Vankar</h5>
+              <p class="card-text">Backend Developer. Knows about django</p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="https://www.linkedin.com/in/jay-vankar-2b5074343/">https://www.linkedin.com/in/jay-vankar-2b5074343/</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Jay Kapadia -->
+        <div class="col-lg-3 col-md-6">
+          <div class="feature-card">
+            <a class="card-img-container" href="https://www.linkedin.com/in/kapadia-jay-2000b6349/" target="_blank">
+              <img src="https://media.licdn.com/dms/image/v2/D4D03AQFl38AKBvjJPw/profile-displayphoto-shrink_200_200/B4DZZ3kJFjG0AY-/0/1745762709074?e=2147483647&v=beta&t=0xZLKbEH-zVleLb0y5FUPD2JqnTGjK5dFcYMilaNVHk" alt="Timetable" class="img-fluid">
+            </a>
+            <div class="card-body">
+              <h5 class="card-title">Jay Kapadia</h5>
+              <p class="card-text">Backend Developer</p>
+            </div>
+            <div class="card-footer text-center">
+              <a href="https://www.linkedin.com/in/kapadia-jay-2000b6349/" >https://www.linkedin.com/in/kapadia-jay-2000b6349/</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  
+    <section class="mb-15">
+        <h2 class="text-center mb-4 fw-bold" style=" position: relative; top: 16px; color: var(--secondary);">Our Goals</h2>
+        <div class="row g-4 justify-content-center">
+        </div>
+        <div class="mt-15">
+            <div class="para-card">
+              
+              <div class="card-body">
+                <p class="card-text">Our primary goal is to create a platform that is efficient, secure, and user-friendly.
+ It is to design a system that simplifies the process of managing student information, making it easily accessible for administrators,
+ teachers, and students.</p>
+              </div>
+            </div>
+          </div>
+    </section>
+        {% endblock %}
